@@ -24,37 +24,37 @@ The site combines a warm, structured launch roadmap with an editorial dark-navy 
 - **Roadmap dialog** — focus trap, Escape, restore focus, required name/email/state/timing.
 - **Local-only form** — submit does not transmit or persist information.
 - **Consulting disclaimer** — "do not include patient information" in the footer.
-- **Sites worker** — `npm run build` packages an OpenAI Sites SPA fallback worker.
+- **Sites worker** — `pnpm --filter practice-studio build` packages an OpenAI Sites SPA fallback worker.
 
 ## How To Use
 
-You will need npm. From your command line:
+Use Node 22 and pnpm 11.9.0 from the monorepo root. From your command line:
 
 ```bash
 # Clone this repository
-git clone https://github.com/jonathan-arteaga/practice-studio.git
+git clone https://github.com/jonathan-arteaga/website-examples.git
 
 # Go into the repository
-cd practice-studio
+cd website-examples
 
 # Install dependencies
-npm install
+pnpm install --frozen-lockfile
 
 # Run the prototype
-npm run dev
+pnpm --filter practice-studio dev
 
 # Production build (includes Sites worker)
-npm run build
+pnpm --filter practice-studio build
 
 # Sites worker tests
-npm run test:sites
+pnpm --filter practice-studio test:sites
 ```
 
 The roadmap form is intentionally local-only. It does not transmit or persist submitted information.
 
 ## Resources
 
-- **[Preview deployment](https://practice-studio-beta.vercel.app/)**
+- **[Preview deployment](https://website-examples-alpha.vercel.app/examples/practice-studio/)**
 
 ## License
 
