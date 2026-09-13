@@ -20,9 +20,19 @@ Both original commit graphs remain ancestors of the combined repository. Origina
 
 | Legacy URL | Observed target | Migration state |
 | --- | --- | --- |
-| `hearthmere-residential.vercel.app` | Project `prj_1r1mfRORxy5ojTaeAIRZK43Pcusl`; old Git link `property-management-showcase`; reported ready production `dpl_7qrLNfn8nLuqRdbSG5ijhRyY8YVH` | Keep intact until new production passes |
-| `practice-studio-beta.vercel.app` | Project not found in the documented `jon-art-projects` team | Resolve ownership before changing this URL |
+| `hearthmere-residential.vercel.app` | Project `prj_1r1mfRORxy5ojTaeAIRZK43Pcusl`; old Git link `property-management-showcase`; reported ready production `dpl_7qrLNfn8nLuqRdbSG5ijhRyY8YVH` | Replaced by verified redirect-only deployment; Git pipeline disconnected |
+| `practice-studio-beta.vercel.app` | Project not found in the documented `jon-art-projects` team | Returns DEPLOYMENT_NOT_FOUND; project and alias absent in documented team; left untouched |
 
 The desired redirect retains each existing path and query string and prefixes it with `/examples/property-management` or `/examples/practice-studio`. Use redirect-only deployments if Vercel cannot transfer the legacy alias safely. Disconnect legacy build pipelines after verification; retain rollback targets and original source histories.
 
-CI credential setup and final deployment/redirect results are recorded here after verification.
+## Completed migration
+
+- Public portfolio: https://website-examples-alpha.vercel.app/
+- Production deployment: `dpl_6FyKuf838bUUpAX4uQPuULzArwNv` (Ready; anonymous browser smoke passed).
+- Hearthmere redirect deployment: `dpl_HFPpE37VTLjMEktXnrTwW6hnAUNH` (Ready).
+- Nested paths and query strings verified through HTTP 308 responses.
+- Old Hearthmere Git connection disconnected; its small redirect deployment requires no rebuilds.
+- Original Hearthmere settings are saved in `hearthmere-rollback.json`; original source repositories remain unchanged.
+- GitHub's project IDs and canonical-origin variables are configured. The persistent CI credential is pending the explicit approval requested during implementation. Until configured, verification runs in full and deployment is explicitly skipped with a warning.
+
+The old Gitleaks action computed an invalid parent-of-root range on the first push. The replacement downloads a pinned, checksum-verified binary and scans all imported history directly, avoiding the first-commit assumption and covering both source graphs.

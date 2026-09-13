@@ -58,6 +58,7 @@ try {
     .getByRole("navigation", { name: "Main navigation" })
     .getByRole("link", { name: "Gallery", exact: true })
     .click();
+  await page.locator("#gallery-grid").waitFor({ state: "visible" });
   assert.ok(await page.locator("#gallery-grid").isVisible());
   assert.deepEqual(errors, []);
   console.log(

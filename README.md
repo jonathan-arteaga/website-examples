@@ -13,7 +13,7 @@ Two concepts, six individual website experiences. Each retains its own visual id
 | Property Management | Hearthmere Residential and four connected community sites: Alderwyck, Norvale, Larkmere, and Caldridge |
 | Practice Studio | An editorial website and local roadmap-request demonstration |
 
-The gallery is at `/`. Demos live under `/examples/property-management/` and `/examples/practice-studio/`.
+The [live gallery](https://website-examples-alpha.vercel.app/) is at `/`. Demos live under `/examples/property-management/` and `/examples/practice-studio/`.
 
 All identities and operating details are fictional. Forms do not transmit information. The demos are non-indexable; the gallery is indexable. This is a personal, non-commercial collection, not a live property or healthcare service.
 
