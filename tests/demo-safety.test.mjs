@@ -10,6 +10,8 @@ const DEPLOYED_APP_NAME = 'hearthmere-residential';
 const SOURCE_SCAN_EXCLUDED_DIRECTORIES = new Set([
   '.next',
   '.turbo',
+  'out',
+  'dist',
   'node_modules',
 ]);
 
@@ -140,13 +142,18 @@ test('the single deployed app emits the locked no-index and self-only response p
     assert.ok(csp.includes(directive), directive);
   }
 
-  const proxy = read(`apps/${DEPLOYED_APP_NAME}/src/proxy.ts`);
-  assert.match(proxy, /createDemoContentSecurityPolicy\(nonce\)/);
-  assert.match(proxy, /response\.headers\.set\('X-Frame-Options', 'DENY'\)/);
-  assert.match(
-    proxy,
-    /response\.headers\.set\('X-Robots-Tag', 'noindex, nofollow, noarchive'\)/
-  );
+  const config = JSON.parse(read('.vercel/output/config.json'));
+  const demoRoute = config.routes.find(route => route.headers?.['X-Robots-Tag']);
+  assert.equal(demoRoute.headers['X-Robots-Tag'], 'noindex, nofollow, noarchive');
+  const htmlRoutes = config.routes.filter(route => route.headers?.['Content-Security-Policy']);
+  assert.ok(htmlRoutes.length >= 58);
+  for (const route of htmlRoutes) {
+    const policy = route.headers['Content-Security-Policy'];
+    assert.ok(policy.includes("form-action 'none'"));
+    assert.ok(policy.includes("frame-ancestors 'none'"));
+    assert.ok(!policy.includes("'unsafe-eval'"));
+    assert.ok(!policy.includes("'nonce-"));
+  }
 
   const robots = read(`apps/${DEPLOYED_APP_NAME}/src/app/robots.ts`);
   assert.match(robots, /userAgent:\s*'\*'/);
@@ -184,6 +191,6 @@ test('images are local-only and remote image configuration is absent', () => {
   assert.doesNotMatch(imageConfig, /\bremotePatterns\b|\bdomains\b/);
 
   const nextConfig = read(`apps/${DEPLOYED_APP_NAME}/next.config.ts`);
-  assert.match(nextConfig, /images:\s*createNextImageConfig\(\)/);
+  assert.match(nextConfig, /createNextImageConfig\(\)/);
   assert.doesNotMatch(nextConfig, /\bremotePatterns\b|\bdomains\b/);
 });

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import { PortfolioLink as Link } from './PortfolioLink';
 import { buttonVariants } from './Button';
 import { PhoneIcon, CalendarIcon } from '../icons';
 import { withPropertyBasePath } from '../lib/property-path';

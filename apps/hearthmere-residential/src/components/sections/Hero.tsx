@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import { PortfolioImage as Image } from '@hearthmere/ui';
+import { PortfolioLink as Link } from '@hearthmere/ui';
 import { Container, buttonVariants } from '@hearthmere/ui';
 import { companyConfig } from '@/config/company';
 

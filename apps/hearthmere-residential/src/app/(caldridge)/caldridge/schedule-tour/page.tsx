@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Metadata } from 'next';
 import { PropertyScheduleTourPage } from '@hearthmere/ui';
 import { ScheduleTourForm } from '@caldridge/components/forms/ScheduleTourForm';
@@ -9,20 +10,13 @@ export const metadata: Metadata = {
   alternates: { canonical: '/caldridge/schedule-tour' },
 };
 
-interface ScheduleTourPageProps {
-  searchParams: Promise<{ plan?: string }>;
-}
-
-export default async function ScheduleTourPage({ searchParams }: ScheduleTourPageProps) {
-  const params = await searchParams;
-  const defaultFloorPlan = params.plan;
-
+export default function ScheduleTourPage() {
   return (
     <PropertyScheduleTourPage
       propertyName={propertyConfig.name}
       officeHours={propertyConfig.contact.officeHours}
       tourHours={propertyConfig.contact.tourHours}
-      scheduleTourForm={<ScheduleTourForm defaultFloorPlan={defaultFloorPlan} />}
+      scheduleTourForm={<Suspense fallback={<p>Loading tour form…</p>}><ScheduleTourForm /></Suspense>}
     />
   );
 }

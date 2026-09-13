@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import Image from 'next/image';
+import { PortfolioImage as Image } from './PortfolioImage';
 import { formatPrice, formatSqft } from '@hearthmere/utils/client';
 import { Card } from './Card';
 import { FloorPlanPlaceholder } from './FloorPlanPlaceholder';

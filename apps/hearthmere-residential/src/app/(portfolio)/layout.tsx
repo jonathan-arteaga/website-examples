@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { headers } from 'next/headers';
 import './globals.css';
 import { assertProductionEnv } from '@hearthmere/utils';
 
@@ -85,21 +84,23 @@ export default async function RootLayout({
 }>) {
   assertProductionEnv({ context: 'root layout' });
 
-  const headersList = await headers();
-  const nonce = headersList.get('x-nonce') ?? undefined;
 
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        <JsonLd nonce={nonce} />
+        <JsonLd />
       </head>
       <body className="min-h-screen flex flex-col bg-white text-gray-900 antialiased">
         <ToastProvider>
+
           <Header />
           <main id="main-content" className="flex-1">
             {children}
           </main>
           <Footer />
+          {/* Cross-application navigation intentionally leaves the Next base path. */}
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+          <a href="/" style={{ display: "block", padding: "8px 24px", textAlign: "right", fontSize: 12, background: "#f3f1ed", color: "#243043" }}>← Back to examples</a>
           <ToastContainer />
           <CookieConsent />
           <DemoSafetyNotice />

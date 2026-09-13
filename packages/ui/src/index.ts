@@ -68,3 +68,7 @@ export { ToastProvider, useToast, type Toast, type ToastType } from './contexts/
 
 // Icons
 export * from './icons';
+
+export { PortfolioImage } from './components/PortfolioImage';
+
+export { PortfolioLink } from './components/PortfolioLink';

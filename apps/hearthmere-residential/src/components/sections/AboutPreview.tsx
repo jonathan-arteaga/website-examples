@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { PortfolioLink as Link } from '@hearthmere/ui';
 import { Container, buttonVariants } from '@hearthmere/ui';
 import { ArrowRightIcon } from '@/components/icons';
 import { companyConfig } from '@/config/company';

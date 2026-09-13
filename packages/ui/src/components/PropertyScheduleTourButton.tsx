@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactNode } from 'react';
-import Link from 'next/link';
+import { PortfolioLink as Link } from './PortfolioLink';
 import { buttonVariants, type ButtonVariant, type ButtonSize } from './Button';
 import { CalendarIcon } from '../icons/property';
 import { withPropertyBasePath } from '../lib/property-path';

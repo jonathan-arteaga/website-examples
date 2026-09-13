@@ -14,7 +14,7 @@ export const properties: Property[] = [
   {
     id: 'alderwyck-apartments',
     name: 'Alderwyck Apartments',
-    path: SHOWCASE_SITES.alderwyck.basePath,
+    path: `/examples/property-management${SHOWCASE_SITES.alderwyck.basePath}/`,
     image: '/images/properties/alderwyck-apartments.jpg',
     city: 'Example City, TX',
     unitCount: 148,
@@ -23,7 +23,7 @@ export const properties: Property[] = [
   {
     id: 'caldridge-townhomes',
     name: 'Caldridge Townhomes',
-    path: SHOWCASE_SITES.caldridge.basePath,
+    path: `/examples/property-management${SHOWCASE_SITES.caldridge.basePath}/`,
     image: '/images/properties/caldridge-townhomes.jpg',
     city: 'Example Heights, TN',
     unitCount: 156,
@@ -32,7 +32,7 @@ export const properties: Property[] = [
   {
     id: 'norvale-commons',
     name: 'Norvale Commons',
-    path: SHOWCASE_SITES.norvale.basePath,
+    path: `/examples/property-management${SHOWCASE_SITES.norvale.basePath}/`,
     image: '/images/properties/norvale-commons.jpg',
     city: 'Sample City, TN',
     unitCount: 112,
@@ -41,7 +41,7 @@ export const properties: Property[] = [
   {
     id: 'larkmere-gardens',
     name: 'Larkmere Gardens',
-    path: SHOWCASE_SITES.larkmere.basePath,
+    path: `/examples/property-management${SHOWCASE_SITES.larkmere.basePath}/`,
     image: '/images/properties/larkmere-gardens.jpg',
     city: 'Demo City, KS',
     unitCount: 128,

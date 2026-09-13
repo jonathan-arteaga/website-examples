@@ -1,8 +1,8 @@
 'use client';
 
 import { ReactNode, Ref } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+import { PortfolioImage as Image } from './PortfolioImage';
+import { PortfolioLink as Link } from './PortfolioLink';
 import { formatPrice, formatSqft } from '@hearthmere/utils/client';
 import { buttonVariants } from './Button';
 import { Card } from './Card';

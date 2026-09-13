@@ -26,3 +26,6 @@ When implementing from a selected generated mock, treat that image as the source
 - After a production deployment, confirm Vercel reports the deployment as Ready, verify the public URL without authentication, load a built asset, and test the primary roadmap CTA in a rendered browser.
 
 Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts/prepare-sites-build.mjs`, and `tests/sites-worker.test.mjs` intact so the same local prototype can be handed to Sites. Before a Sites handoff, run `npm run build` and `npm run test:sites`; the build must leave `dist/client/index.html`, `dist/server/index.js`, and `dist/.openai/hosting.json`.
+
+## Portfolio monorepo (supersedes standalone deployment notes)
+The canonical source is now the private website-examples repository. Use pnpm from the workspace root. Production is a combined static deployment at /examples/practice-studio/. Keep standalone Sites packaging intact; old deployment pipelines will be retired after verified redirects.

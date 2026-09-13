@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useSyncExternalStore } from 'react';
-import Link from 'next/link';
+import { PortfolioLink as Link } from './PortfolioLink';
 import { Button } from './Button';
 import { CookieIcon, XIcon } from '../icons';
 import { withPropertyBasePath } from '../lib/property-path';

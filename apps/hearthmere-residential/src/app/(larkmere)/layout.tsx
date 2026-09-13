@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
-import { headers } from 'next/headers';
 import {
   createPropertyMetadata,
   propertyViewport,
@@ -37,15 +36,13 @@ export default async function RootLayout({
 }>) {
   assertProductionEnv({ context: 'root layout' });
 
-  const headersList = await headers();
-  const nonce = headersList.get('x-nonce') ?? undefined;
 
   return (
     <PropertyRootLayout
       basePath={siteBasePath}
       header={<Header />}
       footer={<Footer />}
-      structuredData={<StructuredData type="apartment" nonce={nonce} />}
+      structuredData={<StructuredData type="apartment" />}
       stickyMobileCTA={<StickyMobileCTA />}
       fontClassName={inter.variable}
     >

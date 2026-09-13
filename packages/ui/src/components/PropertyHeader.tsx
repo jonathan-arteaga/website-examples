@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+import { PortfolioImage as Image } from './PortfolioImage';
+import { PortfolioLink as Link } from './PortfolioLink';
 import { usePathname } from 'next/navigation';
 import { buttonVariants, type ButtonVariant } from './Button';
 import { MenuIcon, PhoneIcon, XIcon } from '../icons/property';

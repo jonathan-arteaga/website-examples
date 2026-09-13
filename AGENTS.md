@@ -1,41 +1,11 @@
-# Repository Guidance
+# Website Examples
 
-Treat this repository as a private, fictional portfolio showcase. Never add real client,
-resident, owner, vendor, school, business, location, credential, analytics, or leasing
-data. Do not connect demo experiences to live submissions or third-party property systems.
+Personal, non-commercial design collection. Source remains private. Preserve the two imported histories and their tags; never push changes to the original repositories.
 
-## Locked portfolio data
+Use Node 22 and pnpm 11.9.0. Each app owns its design and scoped instructions. Hearthmere shared packages are not a collection-wide design system.
 
-- Hearthmere Residential: 100 Portfolio Way, Suite 400, Example City, TX 00000;
-  (214) 555-0100; 544 homes across 4 communities.
-- Alderwyck Apartments: 1420 Lantern Walk, Example City, TX 00000;
-  (682) 555-0111; 148 homes; 575–820 sq ft; $1,245–$1,495.
-- Norvale Commons: 2875 Juniper Loop, Sample City, TN 00000;
-  (615) 555-0122; 112 homes; 680–1,395 sq ft; $1,045–$1,840.
-- Larkmere Gardens: 3640 Garden Terrace, Demo City, KS 00000;
-  (785) 555-0133; 128 homes; 625–985 sq ft; $995–$1,530.
-- Caldridge Townhomes: 4812 Foundry Row, Example Heights, TN 00000;
-  (423) 555-0144; 156 homes; 745–1,895 sq ft; $1,325–$2,580.
+All demonstrations are fictional and local-only. No real submissions, analytics, credentials, client data, or paid services. Keep examples non-indexable. Preserve imported LICENSE files.
 
-Keep these collection sizes unchanged unless the repository owner explicitly changes the
-showcase brief:
+`pnpm build` assembles static Vercel output; `pnpm preview` serves the exact routes and headers locally. `pnpm verify` runs checks against that output. Do not introduce functions, middleware, runtime image optimization, or an unbounded SPA fallback.
 
-| Community | Gallery | Floor plans | Amenities | Points of interest |
-| --- | ---: | ---: | ---: | ---: |
-| Alderwyck Apartments | 10 | 2 | 18 | 19 |
-| Norvale Commons | 22 | 6 | 24 | 19 |
-| Larkmere Gardens | 24 | 4 | 16 | 19 |
-| Caldridge Townhomes | 30 | 6 | 16 | 22 |
-
-Preserve the existing bedroom and bathroom combinations. Neighborhood place names and
-distances must remain generic, fictional, and explicitly illustrative. Do not add real
-coordinates, schools, businesses, maps, reviews, availability, or endorsements.
-
-## Implementation rules
-
-- Keep fallback site URLs on `.example`.
-- Keep property coordinates absent rather than inventing plausible coordinates.
-- Keep the showcase non-indexable and free of live verification tokens.
-- Preserve component structure and responsive behavior when changing content.
-- Do not add an open-source license.
-- Run the narrowest relevant lint, type-check, test, and build checks after changes.
+CI deploys the verified prebuilt output on main. Preserve old targets until the new production site and redirects have been verified. Never commit .vercel, environment files, credentials, or build output.

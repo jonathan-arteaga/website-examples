@@ -9,7 +9,8 @@ import {
 const DISCLOSURE =
   'Portfolio demonstration — all properties, pricing, availability, and contact details are fictional.';
 const LOCAL_PREFERENCE_KEY = 'portfolio-demo-notice-dismissed';
-const PUBLIC_ORIGIN = 'https://hearthmere-residential.vercel.app';
+const PUBLIC_ORIGIN = `${process.env.PORTFOLIO_ORIGIN || 'https://website-examples-alpha.vercel.app'}/examples/property-management`;
+const MOUNT = '/examples/property-management';
 const gatewayPort = Number(process.env.SHOWCASE_GATEWAY_PORT ?? '3000');
 
 if (!Number.isInteger(gatewayPort) || gatewayPort < 1 || gatewayPort > 65_535) {
@@ -80,7 +81,7 @@ const sites = [
 ] as const;
 
 function siteUrl(site: (typeof sites)[number], route = '/') {
-  const mountedOrigin = `${site.origin}${site.basePath}`;
+  const mountedOrigin = `${site.origin}${MOUNT}${site.basePath}`;
   return route === '/' ? mountedOrigin : `${mountedOrigin}${route}`;
 }
 
@@ -124,7 +125,9 @@ function monitorPage(page: Page, origin: string) {
       isSameOriginNextRscRequest(request, origin) &&
       errorText === 'net::ERR_ABORTED';
 
-    if (!isCancelledNextPrefetch) {
+    const requestUrl = new URL(request.url());
+    const isCancelledStaticProbe = request.method() === 'HEAD' && requestUrl.origin === origin && requestUrl.pathname === `${MOUNT}/` && errorText === 'net::ERR_ABORTED';
+    if (!isCancelledNextPrefetch && !isCancelledStaticProbe) {
       failedRequests.push(`${request.method()} ${request.url()}: ${errorText}`);
     }
   });
@@ -178,7 +181,7 @@ async function assertRoute(
   const canonicalPath = `${site.basePath}${route === '/' ? '' : route}`;
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
     'href',
-    `${PUBLIC_ORIGIN}${canonicalPath}`
+    `${PUBLIC_ORIGIN}${canonicalPath}/`
   );
 
   const horizontalOverflow = await page.evaluate(
@@ -328,7 +331,7 @@ for (const site of sites) {
       .getByRole('navigation', { name: 'Mobile navigation' })
       .getByRole('link', { name: targetName, exact: true })
       .click();
-    await expect(page).toHaveURL(new RegExp(`/${targetName.toLowerCase()}$`));
+    await expect(page).toHaveURL(new RegExp(`/${targetName.toLowerCase()}/?$`));
 
     await page
       .getByRole('contentinfo')
@@ -344,7 +347,7 @@ for (const site of sites.filter((candidate) => candidate.property)) {
   test(`${site.name} is served by the single Hearthmere build`, async ({ page }) => {
     await dismissPreferenceNotice(page);
     const assertCleanRuntime = monitorPage(page, site.origin);
-    const mountedUrl = `${site.origin}${site.basePath}`;
+    const mountedUrl = `${site.origin}${MOUNT}${site.basePath}`;
 
     const response = await page.goto(mountedUrl, { waitUntil: 'networkidle' });
     expect(response?.status()).toBe(200);
@@ -371,8 +374,8 @@ for (const site of sites.filter((candidate) => candidate.property)) {
     expect(
       resourcePaths.every(
         (path) =>
-          path.startsWith('/_next/') ||
-          path.startsWith(`${site.basePath}/images/`)
+          path.startsWith(`${MOUNT}/_next/`) || path.startsWith(`${MOUNT}/_responsive/`) ||
+          path.startsWith(`${MOUNT}${site.basePath}/images/`)
       ),
       'community assets come from the one Next.js build'
     ).toBe(true);
@@ -385,16 +388,16 @@ for (const site of sites.filter((candidate) => candidate.property)) {
     );
     expect(
       optimizedImagePaths.some(
-        (path) => path === '/_next/image'
+        (path) => path.startsWith(`${MOUNT}/_responsive/`)
       ),
-      'Next.js image optimization uses the shared application route'
+      'Images use prebuilt static variants'
     ).toBe(true);
 
     await page
       .getByRole('navigation', { name: 'Main navigation' })
       .getByRole('link', { name: 'Gallery', exact: true })
       .click();
-    await expect(page).toHaveURL(`${mountedUrl}/gallery`);
+    await expect(page).toHaveURL(`${mountedUrl}/gallery/`);
     await expect(page.locator('#gallery-grid')).toBeVisible();
     assertCleanRuntime();
   });

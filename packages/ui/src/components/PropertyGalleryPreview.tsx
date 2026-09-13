@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import { PortfolioImage as Image } from './PortfolioImage';
+import { PortfolioLink as Link } from './PortfolioLink';
 import { buttonVariants } from './Button';
 import { Container } from './Container';
 import { ArrowRightIcon } from '../icons/property';

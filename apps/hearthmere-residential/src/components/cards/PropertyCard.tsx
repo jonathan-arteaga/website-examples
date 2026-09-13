@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import { PortfolioImage as Image } from '@hearthmere/ui';
 import { Card, buttonVariants } from '@hearthmere/ui';
 import type { Property } from '@/config/properties';
 

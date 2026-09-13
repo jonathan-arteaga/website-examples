@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { PortfolioLink as Link } from './PortfolioLink';
 import { Container } from './Container';
 import { withPropertyBasePath } from '../lib/property-path';
 

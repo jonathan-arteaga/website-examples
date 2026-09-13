@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { PortfolioLink as Link } from '@hearthmere/ui';
 import { Container } from '@hearthmere/ui';
 import { PhoneIcon, EnvelopeIcon, MapPinIcon, EqualHousingIcon, BrandMarkIcon } from '@/components/icons';
 import { companyConfig } from '@/config/company';

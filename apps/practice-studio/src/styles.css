@@ -567,3 +567,6 @@ h1, h2 { font-family: var(--serif); }
     animation-iteration-count: 1 !important;
   }
 }
+
+.portfolio-back { display: block; padding: 10px 24px; background: #f3f1ed; color: #243043; font: 12px/1.5 sans-serif; text-align: right; }
+.portfolio-back:focus-visible { outline: 3px solid #a5532d; outline-offset: -3px; }

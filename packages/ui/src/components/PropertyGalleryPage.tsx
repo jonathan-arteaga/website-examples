@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import Image from 'next/image';
+import { PortfolioImage as Image } from './PortfolioImage';
 import { Container } from './Container';
 import { cn } from '@hearthmere/utils/client';
 import { XIcon, ChevronLeftIcon, ChevronRightIcon } from '../icons';

@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { PortfolioLink as Link } from '@hearthmere/ui';
 import { Container } from '@hearthmere/ui';
 import { buttonVariants } from '@hearthmere/ui';
 import { IconWrapper } from '@norvale/components/ui/IconWrapper';

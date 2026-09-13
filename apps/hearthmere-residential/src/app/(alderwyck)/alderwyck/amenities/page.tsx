@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
+import { PortfolioImage as Image } from '@hearthmere/ui';
 import { Container } from '@hearthmere/ui';
 import { Card } from '@hearthmere/ui';
 import { IconWrapper } from '@alderwyck/components/ui/IconWrapper';

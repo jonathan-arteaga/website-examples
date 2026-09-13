@@ -1,7 +1,7 @@
 'use client';
 
-import Link from 'next/link';
-import Image from 'next/image';
+import { PortfolioLink as Link } from './PortfolioLink';
+import { PortfolioImage as Image } from './PortfolioImage';
 import { Container } from './Container';
 import { PhoneIcon, MapPinIcon, ClockIcon, EqualHousingIcon } from '../icons';
 import { PORTFOLIO_DISCLOSURE } from './DemoSafetyNotice';

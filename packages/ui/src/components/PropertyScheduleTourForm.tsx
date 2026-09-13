@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
@@ -37,6 +38,8 @@ export function PropertyScheduleTourForm({
   phonePlaceholder = '(555) 123-4567',
   formDisclosure,
 }: PropertyScheduleTourFormProps) {
+  const searchParams = useSearchParams();
+  const requestedPlan = searchParams.get('plan');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
   const { addToast } = useToast();
 
@@ -55,6 +58,12 @@ export function PropertyScheduleTourForm({
       message: '',
     },
   });
+
+  const { setValue } = form;
+  useEffect(() => {
+    const plan = requestedPlan || defaultFloorPlan || '';
+    setValue('floorPlanInterest', floorPlanOptions.some(option => option.value === plan) ? plan : '');
+  }, [requestedPlan, defaultFloorPlan, floorPlanOptions, setValue]);
 
   const onSubmit = async () => {
     setStatus('submitting');

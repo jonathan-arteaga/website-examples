@@ -208,7 +208,7 @@ function HeroRoute() {
       <span className="hero-route__edge hero-route__edge--top">From idea</span>
       <img
         className="hero-route__image"
-        src="/assets/hero-launch-path.png"
+        src={`${import.meta.env.BASE_URL}assets/hero-launch-path.png`}
         alt=""
         width="863"
         height="1822"
@@ -376,6 +376,7 @@ export function App() {
 
   return (
     <>
+      <a className="portfolio-back" href="/">← Back to examples</a>
       <a className="skip-link" href="#main-content">Skip to content</a>
       <div id="top" />
       <section className="hero" aria-labelledby="hero-title">
@@ -422,7 +423,7 @@ export function App() {
             </div>
             <figure className="blueprint__visual">
               <img
-                src="/assets/launch-roadmap-notebook.png"
+                src={`${import.meta.env.BASE_URL}assets/launch-roadmap-notebook.png`}
                 alt="A spiral-bound launch roadmap with sections for planning, foundations, systems, launch, and support"
                 width="1536"
                 height="1024"

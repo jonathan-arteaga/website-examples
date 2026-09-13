@@ -30,9 +30,9 @@ export default defineConfig({
     video: 'retain-on-failure',
   },
   webServer: {
-    command: `pnpm --filter hearthmere-residential start --port ${gatewayPort}`,
+    command: `node scripts/preview-portfolio.mjs`,
     env: {
-      NEXT_PUBLIC_SITE_URL: 'https://hearthmere-residential.vercel.app',
+      SHOWCASE_GATEWAY_PORT: String(gatewayPort),
     },
     url: `http://127.0.0.1:${gatewayPort}`,
     reuseExistingServer: !process.env.CI,

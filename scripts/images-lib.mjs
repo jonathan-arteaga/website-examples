@@ -75,6 +75,7 @@ function walkFiles(dir, predicate, out = []) {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
     const fullPath = path.join(dir, entry.name);
     if (entry.isDirectory()) {
+      if (entry.name === '_responsive') continue;
       walkFiles(fullPath, predicate, out);
       continue;
     }

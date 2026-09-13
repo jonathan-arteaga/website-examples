@@ -62,7 +62,7 @@ export function createPropertyMetadata(
     },
     description: seoConfig.defaultDescription,
     keywords: seoConfig.keywords,
-    metadataBase: new URL(canonicalUrl).origin,
+    metadataBase: new URL('/examples/property-management/', canonicalUrl),
     alternates: {
       canonical: canonicalUrl,
     },
@@ -125,11 +125,15 @@ export function PropertyRootLayout({
       </head>
       <body className="min-h-screen flex flex-col bg-white text-gray-900 antialiased">
         <ToastProvider>
+
           {header}
           <main id="main-content" className="flex-1">
             {children}
           </main>
           {footer}
+          {/* Cross-application navigation intentionally leaves the Next base path. */}
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+          <a href="/" style={{ display: "block", padding: "8px 24px", textAlign: "right", fontSize: 12, background: "#f3f1ed", color: "#243043" }}>← Back to examples</a>
           <ToastContainer />
           {stickyMobileCTA}
           <CookieConsent basePath={basePath} />

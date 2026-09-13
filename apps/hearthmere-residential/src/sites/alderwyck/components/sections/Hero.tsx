@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { PortfolioImage as Image } from '@hearthmere/ui';
 import { Container } from '@hearthmere/ui';
 import { ApplyNowButton } from '@alderwyck/components/cta/ApplyNowButton';
 import { ScheduleTourButton } from '@alderwyck/components/cta/ScheduleTourButton';

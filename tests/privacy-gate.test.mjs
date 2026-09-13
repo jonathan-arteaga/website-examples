@@ -76,3 +76,11 @@ test('history scan drops shallow GitHub merge commits that omit Merge parents', 
   assert.equal(scanned.includes('example-user@example.com'), false);
   assert.equal(scanned.includes(repositoryCommit), true);
 });
+
+
+test('decimal icon coordinates are not ZIP codes, but exact ZIP values remain detected', async () => {
+  const { findForbiddenNumbers } = await import('../scripts/privacy-gate.mjs');
+  const decimal = '67,216';
+  assert.equal(findForbiddenNumbers(`M176,181.64,${decimal},216`).has('zip-property-3'), false);
+  assert.equal(findForbiddenNumbers(decimal.replace(',', '')).has('zip-property-3'), true);
+});

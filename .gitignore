@@ -46,3 +46,6 @@ test-results
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
+
+apps/hearthmere-residential/public/_responsive/
+.env*

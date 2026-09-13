@@ -166,14 +166,14 @@ test('the workspace has one deployed app containing five locked identities', () 
     .map((entry) => entry.name)
     .sort();
 
-  assert.deepEqual(appDirectories, ['hearthmere-residential']);
+  assert.deepEqual(appDirectories, ['gallery', 'hearthmere-residential', 'practice-studio']);
 
   const rootPackage = JSON.parse(read('package.json'));
-  assert.equal(rootPackage.name, 'hearthmere-websites');
+  assert.equal(rootPackage.name, 'website-examples');
   assert.equal(rootPackage.private, true);
   assert.equal(rootPackage.packageManager, 'pnpm@11.9.0');
   assert.equal(rootPackage.engines.node, '>=22');
-  assert.equal(existsSync(path.join(ROOT, 'LICENSE')), false);
+  assert.equal(existsSync(path.join(ROOT, 'LICENSE')), true);
 
   const appPackage = JSON.parse(read(`${deployedAppRoot}/package.json`));
   assert.equal(appPackage.name, 'hearthmere-residential');

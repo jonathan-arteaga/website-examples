@@ -114,7 +114,7 @@ test('base-path helpers produce mounted paths and URLs', () => {
 test('community routes are compiled inside Hearthmere without multi-zone rewrites', () => {
   const nextConfig = read('apps/hearthmere-residential/next.config.ts');
   assert.doesNotMatch(nextConfig, /\brewrites\s*\(/);
-  assert.doesNotMatch(nextConfig, /\bbasePath:/);
+  assert.match(nextConfig, /basePath: '\/examples\/property-management'/);
   assert.doesNotMatch(nextConfig, /productionOrigin|localOrigin/);
 
   for (const [key, site] of Object.entries(expectedSites).slice(1)) {

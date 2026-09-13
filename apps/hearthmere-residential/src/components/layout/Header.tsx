@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
+import { PortfolioLink as Link } from '@hearthmere/ui';
 import { usePathname } from 'next/navigation';
 import { MenuIcon, XIcon, PhoneIcon, BrandMarkIcon } from '@/components/icons';
 import { mainNavLinks } from '@/config/navigation';

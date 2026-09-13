@@ -10,8 +10,8 @@ export interface SharedNextImageConfig {
 export function createNextImageConfig(): SharedNextImageConfig {
   return {
     formats: [...IMAGE_POLICY.nextImage.formats],
-    deviceSizes: [...IMAGE_POLICY.nextImage.deviceSizes],
-    imageSizes: [...IMAGE_POLICY.nextImage.imageSizes],
+    deviceSizes: [640, 960, 1440, 1920],
+    imageSizes: [32, 64, 128, 256],
     minimumCacheTTL: IMAGE_POLICY.nextImage.minimumCacheTTL,
   };
 }

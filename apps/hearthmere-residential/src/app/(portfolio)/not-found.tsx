@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { PortfolioLink as Link } from '@hearthmere/ui';
 import { Container } from '@hearthmere/ui';
 
 export default function NotFound() {
